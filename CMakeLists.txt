@@ -136,6 +136,7 @@ set(BUILD_LEGACY_COMPONENTS TRUE CACHE BOOL "Whether to build the legacy compone
 set(BUILD_TEST_COMPONENTS FALSE CACHE BOOL "Whether to build the test component")
 set(BUILD_SQLITE_COMPONENT TRUE CACHE BOOL "Whether to build the SQLite component")
 set(BUILD_FIXES_COMPONENT FALSE CACHE BOOL "Whether to build the Fixes component")
+set(BUILD_CLIENT FALSE CACHE BOOL "Whether to build the open.mp client (Windows x86 only)")
 
 if (UNIX)
 	set(BUILD_ABI_CHECK_TOOL TRUE CACHE BOOL "Whether to build the abi-check tool")
@@ -155,4 +156,8 @@ endif()
 if(BUILD_ABI_CHECK_TOOL)
 	message("Configuring abi-check")
 	add_subdirectory(Tools)
+endif()
+
+if(BUILD_CLIENT)
+	add_subdirectory(Client)
 endif()
